@@ -1,4 +1,4 @@
 Autoassign plugin for Pintask
 =========================
 
-Assign yourself to the card when assigned to its list.
+Add yourself to the card members when dropping it on a list that you are assigned to.
