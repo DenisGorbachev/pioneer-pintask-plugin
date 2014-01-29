@@ -5,12 +5,12 @@ if !Lists
 
 Cards.before.insert (userId, card) ->
   list = Lists.findOne(card.listId)
-  if userId in list.memberIds && userId not in card.memberIds
+  if userId in list.memberIds && !card.memberIds.length
     card.memberIds.push(userId)
 
 Cards.before.update (userId, card, fieldNames, modifier, options) ->
   if modifier.$set?.listId
     list = Lists.findOne(modifier.$set.listId)
-    if userId in list.memberIds && userId not in card.memberIds
+    if userId in list.memberIds && !card.memberIds.length
       if !modifier.$addToSet?.memberIds # safety check
         modifier.$addToSet = {memberIds: userId}

@@ -1,4 +1,4 @@
 pintask-autoassign-plugin
 =========================
 
-Assign yourself to the card when assigned to its list
+Add yourself as card member if there are no other card members and you already are a member of its list
