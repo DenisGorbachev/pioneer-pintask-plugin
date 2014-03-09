@@ -1,7 +1,7 @@
 Pioneer plugin for Pintask
 =========================
 
-Add yourself as card member (if there are no other card members) when adding to or dropping it on a list that you are a member of.
+Add yourself as card member (if there are no other card members) when adding to or dropping it on a list that you are a member of (in [Pintask](http://pintask.me/), the hackable task tracker).
 
 This versatile plugin is only a couple lines of code:
 
