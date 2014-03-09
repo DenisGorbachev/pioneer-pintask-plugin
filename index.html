@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Pioneer-pintask-plugin by DenisGorbachev</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Pioneer-pintask-plugin</h1>
+          <h2>Have a finger in every pie</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/DenisGorbachev/pioneer-pintask-plugin/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/DenisGorbachev/pioneer-pintask-plugin/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/DenisGorbachev/pioneer-pintask-plugin" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="pioneer-plugin-for-pintask" class="anchor" href="#pioneer-plugin-for-pintask"><span class="octicon octicon-link"></span></a>Pioneer plugin for Pintask</h1>
+
+<p>Add yourself as card member (if there are no other card members) when adding to or dropping it on a list that you are a member of.</p>
+
+<p>This versatile plugin is only a couple lines of code:</p>
+
+<div class="highlight highlight-coffee"><pre><span class="k">if</span> <span class="o">!</span><span class="nx">Cards</span>
+  <span class="k">throw</span> <span class="s">"Hey, where are my Cards?"</span>
+<span class="k">if</span> <span class="o">!</span><span class="nx">Lists</span>
+  <span class="k">throw</span> <span class="s">"Look, I need those Lists, too!"</span>
+
+<span class="nx">Cards</span><span class="p">.</span><span class="nx">before</span><span class="p">.</span><span class="nx">insert</span> <span class="nf">(userId, card) -&gt;</span>
+  <span class="nv">list = </span><span class="nx">Lists</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">card</span><span class="p">.</span><span class="nx">listId</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nx">userId</span> <span class="k">in</span> <span class="nx">list</span><span class="p">.</span><span class="nx">memberIds</span> <span class="o">and</span> <span class="o">not</span> <span class="nx">card</span><span class="p">.</span><span class="nx">memberIds</span><span class="p">.</span><span class="nx">length</span>
+    <span class="nx">card</span><span class="p">.</span><span class="nx">memberIds</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
+
+<span class="nx">Cards</span><span class="p">.</span><span class="nx">before</span><span class="p">.</span><span class="nx">update</span> <span class="nf">(userId, card, fieldNames, modifier, options) -&gt;</span>
+  <span class="k">if</span> <span class="nx">modifier</span><span class="p">.</span><span class="nx">$set</span><span class="o">?</span><span class="p">.</span><span class="nx">listId</span>
+    <span class="nv">list = </span><span class="nx">Lists</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">modifier</span><span class="p">.</span><span class="nx">$set</span><span class="p">.</span><span class="nx">listId</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">userId</span> <span class="k">in</span> <span class="nx">list</span><span class="p">.</span><span class="nx">memberIds</span> <span class="o">and</span> <span class="o">not</span> <span class="nx">card</span><span class="p">.</span><span class="nx">memberIds</span><span class="p">.</span><span class="nx">length</span>
+      <span class="k">if</span> <span class="o">not</span> <span class="nx">modifier</span><span class="p">.</span><span class="nx">$addToSet</span><span class="o">?</span><span class="p">.</span><span class="nx">memberIds</span> <span class="c1"># don't add yourself when adding another member</span>
+        <span class="nv">modifier.$addToSet = </span><span class="p">{</span><span class="nv">memberIds: </span><span class="nx">userId</span><span class="p">}</span>
+</pre></div>
+
+<p><em>This plugin is written in <a href="http://coffeescript.org/">CoffeeScript</a>. Plain old <a href="https://github.com/DenisGorbachev/pioneer-pintask-plugin/blob/master/plugin.js">JS version</a> is available, too.</em></p>
+
+<p>So easy to make your own plugin ;)</p>
+        </section>
+
+        <footer>
+          Pioneer-pintask-plugin is maintained by <a href="https://github.com/DenisGorbachev">DenisGorbachev</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
