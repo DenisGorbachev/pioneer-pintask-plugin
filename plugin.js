@@ -33,3 +33,7 @@
   });
 
 }).call(this);
+
+/*
+//@ sourceMappingURL=plugin.map
+*/
