@@ -1,4 +1,4 @@
-Autoassign plugin for Pintask
+Pioneer plugin for Pintask
 =========================
 
 Add yourself as card member (if there are no other card members) when adding to or dropping it on a list that you are a member of.
@@ -23,5 +23,7 @@ Cards.before.update (userId, card, fieldNames, modifier, options) ->
       if not modifier.$addToSet?.memberIds # don't add yourself when adding another member
         modifier.$addToSet = {memberIds: userId}
 ```
+
+_This plugin is written in [CoffeeScript](http://coffeescript.org/). Plain old [JS version](https://github.com/DenisGorbachev/pioneer-pintask-plugin/blob/master/plugin.js) is available, too._
 
 So easy to make your own plugin ;)
